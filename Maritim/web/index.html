@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Look up a vessel by IMO number and review its identity, ownership and sanctions records.">
+  <title>Vessel lookup Â· HullTrace</title>
+  <link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#workspace">Skip to vessel lookup</a>
+<header class="masthead">
+  <div class="mast-inner">
+    <a class="brand" href="/" aria-label="HullTrace home"><img src="/favicon.svg" alt="" width="36" height="36">HullTrace</a>
+    <nav class="primary-nav" aria-label="Workspace">
+      <a href="/" aria-current="page">Vessel lookup</a>
+      <a href="/saved">Saved reports</a>
+      <a href="/records">Historical records</a>
+    </nav>
+    <span class="local-label">Local workspace</span>
+  </div>
+</header>
+<main id="workspace" class="page-content">
+  <section id="lookup" class="lookup-surface" aria-labelledby="lookup-title">
+    <div class="lookup-panel">
+      <h1 id="lookup-title">Vessel lookup</h1>
+      <p class="subtitle">Find a shipâ€™s identity, ownership and sanctions records using its IMO number.</p>
+      <form id="lookup-form" novalidate>
+        <label for="imo-input">IMO number</label>
+        <div class="search-row">
+          <input id="imo-input" name="imo" inputmode="numeric" autocomplete="off" placeholder="Enter 7 digits" aria-describedby="lookup-hint form-error" required>
+          <button id="scan-button" class="primary" type="submit">Look up vessel</button>
+        </div>
+        <div class="search-foot"><p id="lookup-hint">A ship keeps its IMO number when its name changes.</p><button id="use-example" type="button" class="text-button">Use example <span>9299898</span></button></div>
+        <p id="form-error" class="error" role="alert" hidden></p>
+      </form>
+    </div>
+
+  </section>
+  <section id="progress" class="progress-panel" aria-labelledby="progress-title" hidden>
+    <div class="progress-heading"><span class="spinner" aria-hidden="true"></span><div><h2 id="progress-title">Looking up vessel</h2><p id="progress-subtitle">Checking public recordsâ€¦</p></div></div>
+    <ol id="progress-events" aria-live="polite"></ol>
+  </section>
+  <div id="page-message" class="message" role="status" hidden></div>
+
+  <section id="results" aria-labelledby="vessel-name" hidden>
+    <div class="result-heading">
+      <div><p class="kicker">Vessel report</p><h2 id="vessel-name" tabindex="-1"></h2><p id="vessel-meta" class="muted"></p></div>
+      <div class="report-actions"><a id="html-report" class="secondary" target="_blank" rel="noopener">Open report</a><a id="json-download" class="secondary" download>Download JSON</a></div>
+    </div>
+    <div id="metrics" class="metrics"></div>
+    <div id="warnings" class="warnings"></div>
+    <div class="result-toolbar"><nav id="tabs" class="tabs" aria-label="Report sections"></nav><label class="filter-wrap"><span class="sr-only">Filter findings</span><input id="filter" type="search" placeholder="Filter findings"></label></div>
+    <div id="result-content" class="result-content" aria-live="polite"></div>
+    <footer class="results-footer"><span id="coverage-summary"></span></footer>
+  </section>
+</main>
+</body>
+</html>

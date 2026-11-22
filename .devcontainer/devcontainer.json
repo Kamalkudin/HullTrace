@@ -1,0 +1,12 @@
+{
+  "name": "HullTrace",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "forwardPorts": [8765],
+  "portsAttributes": {
+    "8765": {
+      "label": "HullTrace",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postStartCommand": "nohup python -u -m Maritim.server --no-open > /tmp/hulltrace.log 2>&1 < /dev/null &"
+}

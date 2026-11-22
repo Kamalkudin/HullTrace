@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Look up a vessel by IMO number and review its identity, ownership and sanctions records.">
+  <title>Historical records · HullTrace</title>
+  <link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css">
+  <script src="/records.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#workspace">Skip to historical records</a>
+<header class="masthead">
+  <div class="mast-inner">
+    <a class="brand" href="/" aria-label="HullTrace home"><img src="/favicon.svg" alt="" width="36" height="36">HullTrace</a>
+    <nav class="primary-nav" aria-label="Workspace">
+      <a href="/">Vessel lookup</a>
+      <a href="/saved">Saved reports</a>
+      <a href="/records" aria-current="page">Historical records</a>
+    </nav>
+    <span class="local-label">Local workspace</span>
+  </div>
+</header>
+<main id="workspace" class="page-content">
+  <header class="page-heading"><h1>Historical records</h1>
+    <p class="subtitle">Review port visits, inspections, voyages and radio identities from your own records.</p></header>
+  <form id="import-form" class="library">
+    <label for="records-file">Upload a CSV file</label>
+    <p id="upload-hint" class="muted">UTF-8 CSV, up to 1 MB (1,048,576 bytes). Records stay in this view until you leave or reload.</p>
+    <div class="upload-controls">
+      <input id="records-file" type="file" accept=".csv,text/csv" aria-describedby="upload-hint" required>
+      <button id="import-button" class="primary" type="submit">View records</button>
+    </div>
+    <details class="format-guide"><summary>CSV column guide</summary>
+      <p>Include <code>kind</code>, <code>source</code> (a web address) and <code>imo</code> in every row. Include the following columns for each kind of record.</p>
+      <ul><li><code>port</code> — date, port</li><li><code>inspection</code> — date, condition, deficiency</li>
+      <li><code>voyage</code> — container, vessel</li><li><code>radio</code> — month, mmsi</li></ul>
+      <p>Use YYYY-MM-DD for dates and YYYY-MM for months. A single file can include several record types.</p>
+    </details>
+  </form>
+  <p id="status" role="status" aria-live="polite"></p>
+  <section id="record-list" hidden>
+    <label for="record-search">Search imported records</label><input type="search" id="record-search" placeholder="Filter by IMO, date or value">
+    <div class="data-block table-scroll"><table><thead><tr><th>Record type</th><th>IMO</th><th>Observation</th><th>Source</th></tr></thead><tbody id="rows"></tbody></table></div>
+    <div class="controls"><button type="button" class="secondary" id="prev">Previous</button><span id="page" aria-live="polite"></span><button type="button" class="secondary" id="next">Next</button></div>
+  </section>
+</main></body></html>
