@@ -1,6 +1,6 @@
 # HullTrace
 
-HullTrace is a maritime investigation web app. Enter a ship’s seven-digit IMO number to collect public records about its identity, former names, ownership and sanctions history in one lookup. Each report shows where the findings came from and when HullTrace retrieved them.
+HullTrace is a maritime investigation web app For OSINT purposes. Enter a ship’s seven-digit IMO number to collect public records about its identity, former names, ownership and sanctions history in one lookup. Each report shows where the findings came from and when HullTrace retrieved them.
 
 ## Start in GitHub Codespaces
 
